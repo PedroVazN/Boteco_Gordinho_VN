@@ -40,31 +40,24 @@ const MenuItem = ({
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
         />
         {isMarmitex && (
-          <div className="absolute top-4 right-4 z-20 bg-restaurant-accent/90 text-white px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="absolute top-4 right-4 z-20 bg-restaurant-accent/90 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
             Marmitex
           </div>
         )}
       </div>
       <div className="p-6">
-        <div className="flex justify-between items-start">
-          <h3 className="text-xl font-serif font-semibold text-restaurant-primary mb-2">{name}</h3>
-          <p className={cn(
-            "text-xl font-bold",
-            "text-restaurant-accent"
-          )}>
-            {isMarmitex ? marmitexPrice : price}
-          </p>
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="text-xl font-serif font-semibold text-restaurant-primary mb-1">{name}</h3>
+          <div className="bg-restaurant-primary/10 rounded-full px-4 py-1">
+            <p className={cn(
+              "text-xl font-bold",
+              "text-restaurant-accent"
+            )}>
+              {isMarmitex ? marmitexPrice : price}
+            </p>
+          </div>
         </div>
-        <p className="text-gray-400 text-sm mb-4">{description}</p>
-        <div className="pt-2 border-t border-restaurant-primary/20">
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="text-restaurant-accent text-sm font-medium hover:text-restaurant-accentLight transition-colors"
-          >
-            Adicionar ao pedido
-          </motion.button>
-        </div>
+        <p className="text-gray-400 text-sm">{description}</p>
       </div>
     </motion.div>
   );
