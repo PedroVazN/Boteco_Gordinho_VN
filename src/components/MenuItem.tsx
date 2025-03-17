@@ -30,7 +30,7 @@ const MenuItem = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="menu-card elegant-shadow group"
+      className="menu-card shadow-lg shadow-restaurant-primary/10 group"
     >
       <div className="h-48 overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-t from-restaurant-dark via-restaurant-dark/70 to-transparent z-10" />
@@ -40,7 +40,7 @@ const MenuItem = ({
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
         />
         {isMarmitex && (
-          <div className="absolute top-4 right-4 z-20 bg-restaurant-primary/90 text-restaurant-dark px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="absolute top-4 right-4 z-20 bg-restaurant-accent/90 text-white px-3 py-1 rounded-full text-sm font-semibold">
             Marmitex
           </div>
         )}
@@ -50,7 +50,7 @@ const MenuItem = ({
           <h3 className="text-xl font-serif font-semibold text-restaurant-primary mb-2">{name}</h3>
           <p className={cn(
             "text-xl font-bold",
-            "gold-gradient-text"
+            "text-restaurant-accent"
           )}>
             {isMarmitex ? marmitexPrice : price}
           </p>
@@ -60,7 +60,7 @@ const MenuItem = ({
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-restaurant-primary text-sm font-medium hover:text-restaurant-primaryLight transition-colors"
+            className="text-restaurant-accent text-sm font-medium hover:text-restaurant-accentLight transition-colors"
           >
             Adicionar ao pedido
           </motion.button>

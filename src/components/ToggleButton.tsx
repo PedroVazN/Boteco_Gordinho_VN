@@ -18,7 +18,7 @@ const ToggleButton = ({ isActive, onClick, icon: Icon, label }: ToggleButtonProp
       className={cn(
         "px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2",
         isActive 
-          ? "bg-restaurant-primary text-restaurant-dark" 
+          ? "bg-restaurant-primary text-white" 
           : "text-gray-400 hover:text-restaurant-primaryLight"
       )}
     >

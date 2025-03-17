@@ -70,10 +70,11 @@ export default {
 				},
 				restaurant: {
 					dark: '#121212',
-					primary: '#D4AF37',
-					primaryLight: '#E6C558', 
+					primary: '#ea384c',  // Red
+					primaryLight: '#ff5a6e', 
 					secondary: '#1A1A1A',
-					accent: '#8B0000',
+					accent: '#2e7d32',   // Green
+					accentLight: '#4caf50',
 					muted: '#333333',
 					light: '#F5F5F5'
 				}

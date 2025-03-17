@@ -15,13 +15,13 @@ const InfoCard = ({ title, content, icon: Icon, className, delay = 1 }: InfoCard
   return (
     <div 
       className={cn(
-        "bg-restaurant-secondary p-6 rounded-lg gold-border elegant-shadow fade-up",
+        "bg-restaurant-secondary p-6 rounded-lg border border-restaurant-primary/20 shadow-lg shadow-restaurant-primary/10 fade-up",
         `stagger-delay-${delay}`,
         className
       )}
     >
       <div className="flex items-center gap-3 mb-4">
-        {Icon && <Icon size={22} className="text-restaurant-primary" />}
+        {Icon && <Icon size={22} className="text-restaurant-accent" />}
         <h3 className="text-xl font-serif font-semibold text-restaurant-primary">{title}</h3>
       </div>
       <div className="text-gray-300">{content}</div>

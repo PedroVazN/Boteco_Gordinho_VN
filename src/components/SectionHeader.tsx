@@ -10,11 +10,11 @@ type SectionHeaderProps = {
 const SectionHeader = ({ title, className }: SectionHeaderProps) => {
   return (
     <div className={cn("text-center mb-12", className)}>
-      <h2 className="text-4xl font-serif font-bold gold-gradient-text mb-2 fade-up">{title}</h2>
+      <h2 className="text-4xl font-serif font-bold text-restaurant-primary mb-2 fade-up">{title}</h2>
       <div className="flex items-center justify-center gap-2 fade-up">
-        <div className="h-px w-12 bg-restaurant-primary/50"></div>
-        <div className="text-restaurant-primary">✦</div>
-        <div className="h-px w-12 bg-restaurant-primary/50"></div>
+        <div className="h-px w-12 bg-restaurant-accent/70"></div>
+        <div className="text-restaurant-accent">✦</div>
+        <div className="h-px w-12 bg-restaurant-accent/70"></div>
       </div>
     </div>
   );

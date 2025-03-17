@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -150,7 +149,7 @@
   }
   
   .elegant-shadow {
-    box-shadow: 0 10px 30px -15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px -15px rgba(234, 56, 76, 0.3);
   }
   
   .elegant-button {
