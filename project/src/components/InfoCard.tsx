@@ -1,31 +1,26 @@
 
-import React from 'react';
-import { LucideIcon } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import React, { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 type InfoCardProps = {
   title: string;
-  content: React.ReactNode;
-  icon?: LucideIcon;
-  className?: string;
-  delay?: number;
+  content: ReactNode;
+  delay: number;
 };
 
-const InfoCard = ({ title, content, icon: Icon, className, delay = 1 }: InfoCardProps) => {
+const InfoCard = ({ title, content, delay }: InfoCardProps) => {
   return (
-    <div 
-      className={cn(
-        "bg-restaurant-secondary p-6 rounded-lg border border-restaurant-primary/20 shadow-lg shadow-restaurant-primary/10 fade-up",
-        `stagger-delay-${delay}`,
-        className
-      )}
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: delay * 0.1 }}
+      className="bg-restaurant-dark rounded-lg p-6 gold-border elegant-shadow fade-up"
     >
-      <div className="flex items-center gap-3 mb-4">
-        {Icon && <Icon size={22} className="text-restaurant-accent" />}
-        <h3 className="text-xl font-serif font-semibold text-restaurant-primary">{title}</h3>
+      <h3 className="text-xl font-serif font-semibold text-restaurant-primary mb-3">{title}</h3>
+      <div className="text-gray-300">
+        {content}
       </div>
-      <div className="text-gray-300">{content}</div>
-    </div>
+    </motion.div>
   );
 };
 

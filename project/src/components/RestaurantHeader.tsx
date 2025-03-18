@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { UtensilsCrossed, Wine, Fish, Menu, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LucideIcon } from 'lucide-react';
 import CategoryButton from './CategoryButton';
-import { cn } from '@/lib/utils';
 
 type Category = {
   name: string;
-  icon: any;
+  icon: LucideIcon;
 };
 
 type RestaurantHeaderProps = {
@@ -28,82 +28,71 @@ const RestaurantHeader = ({
   categories
 }: RestaurantHeaderProps) => {
   return (
-    <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={cn(
-          "fixed w-full z-50 transition-all duration-500",
-          isScrolled ? "bg-restaurant-dark/95 backdrop-blur-md border-b border-restaurant-primary/20 py-2" : "bg-transparent py-4"
-        )}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3"
-            >
-              <img 
-                src="https://github.com/PedroVazN/Boteco-do-Gordinho/blob/main/project/src/images/logo.png?raw=true" 
-                alt="Boteco do Gordinho"
-                className="w-16 h-16 object-contain" 
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all ${
+      isScrolled ? 'py-2 bg-restaurant-dark/95 backdrop-blur-sm' : 'py-4 bg-transparent'
+    }`}>
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <img 
+              src="project/src/images/logo.png" 
+              alt="Boteco do Gordinho"
+              className="w-10 h-10 object-contain" 
+            />
+            <h1 className="text-xl font-cursive text-restaurant-primary">Boteco do Gordinho</h1>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-3">
+            {categories.map((category) => (
+              <CategoryButton 
+                key={category.name}
+                name={category.name}
+                icon={category.icon}
+                isSelected={selectedCategory === category.name}
+                onClick={() => setSelectedCategory(category.name)}
               />
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-cursive text-restaurant-primary">Boteco do Gordinho</h1>
-                <p className="text-xs text-gray-400">Sabor & Tradição</p>
-              </div>
-            </motion.div>
-            <div className="hidden md:flex gap-4">
-              {categories.map((category, index) => (
-                <CategoryButton
+            ))}
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white p-2"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+      
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-restaurant-dark border-t border-restaurant-primary/20 mt-2"
+          >
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+              {categories.map((category) => (
+                <CategoryButton 
                   key={category.name}
                   name={category.name}
                   icon={category.icon}
-                  isActive={selectedCategory === category.name}
-                  onClick={() => setSelectedCategory(category.name)}
-                  index={index}
+                  isSelected={selectedCategory === category.name}
+                  onClick={() => {
+                    setSelectedCategory(category.name);
+                    setIsMenuOpen(false);
+                  }}
                 />
               ))}
             </div>
-            <motion.button 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-restaurant-primary flex items-center gap-2"
-            >
-              <span className="text-sm text-gray-300">Menu</span>
-              <ChevronDown size={18} className={`transform transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
-            </motion.button>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Menu */}
-      <div className={cn(
-        "md:hidden fixed w-full bg-restaurant-dark border-b border-restaurant-primary/20 z-40 transition-all duration-300",
-        isMenuOpen ? "top-[76px]" : "-top-full"
-      )}>
-        <div className="container mx-auto">
-          {categories.map((category) => (
-            <CategoryButton
-              key={category.name}
-              name={category.name}
-              icon={category.icon}
-              isActive={selectedCategory === category.name}
-              onClick={() => {
-                setSelectedCategory(category.name);
-                setIsMenuOpen(false);
-              }}
-              isMobile
-            />
-          ))}
-        </div>
-      </div>
-    </>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
