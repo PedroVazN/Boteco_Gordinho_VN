@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { MessageSquare } from 'lucide-react';
 
 type MenuItemProps = {
   id: number;
@@ -24,6 +25,15 @@ const MenuItem = ({
   isMarmitex,
   index
 }: MenuItemProps) => {
+  const currentPrice = isMarmitex ? marmitexPrice : price;
+  
+  const handleWhatsAppOrder = () => {
+    const orderType = isMarmitex ? "marmitex de" : "";
+    const message = `Boa tarde, gostaria de pedir um ${orderType} ${name}, de ${currentPrice}, tem disponível?`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/5511987468798?text=${encodedMessage}`, '_blank');
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -53,11 +63,19 @@ const MenuItem = ({
               "text-xl font-bold",
               "text-restaurant-accent"
             )}>
-              {isMarmitex ? marmitexPrice : price}
+              {currentPrice}
             </p>
           </div>
         </div>
-        <p className="text-gray-400 text-sm">{description}</p>
+        <p className="text-gray-400 text-sm mb-4">{description}</p>
+        
+        <button 
+          onClick={handleWhatsAppOrder}
+          className="w-full py-2 px-4 bg-restaurant-accent hover:bg-restaurant-accentLight text-white rounded-md flex items-center justify-center gap-2 transition-colors duration-300 font-medium"
+        >
+          <MessageSquare size={18} />
+          <span>Pedir via WhatsApp</span>
+        </button>
       </div>
     </motion.div>
   );
