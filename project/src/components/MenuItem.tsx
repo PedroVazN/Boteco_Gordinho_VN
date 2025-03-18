@@ -31,7 +31,7 @@ const MenuItem = ({
     const orderType = isMarmitex ? "marmitex de" : "";
     const message = `Boa tarde, gostaria de pedir um ${orderType} ${name}, de ${currentPrice}, tem disponível?`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5511987468798?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/1198746-8798?text=${encodedMessage}`, '_blank');
   };
 
   return (
