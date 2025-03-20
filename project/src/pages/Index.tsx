@@ -394,7 +394,7 @@ const Index = () => {
             </div>
           </div>
           <div className="h-px w-24 bg-restaurant-primary/30 mx-auto mb-4"></div>
-          <p className="text-gray-400 text-sm">© 2024 Boteco do Gordinho - Todos os direitos reservados</p>
+          <p className="text-gray-400 text-sm">© 2025 Boteco do Gordinho - Todos os direitos reservados</p>
         </div>
       </footer>
     </div>
