@@ -36,7 +36,7 @@ const RestaurantHeader = ({
           {/* Logo */}
           <div className="flex items-center gap-2">
             <img 
-              src="https://github.com/PedroVazN/Boteco_Gordinho_VN/blob/main/project/src/images/logo.png?raw=true" 
+              src="https://github.com/PedroVazN/Boteco_Gordinho_VN/blob/main/project/src/images/logo1.png?raw=true" 
               alt="Boteco do Gordinho"
               className="w-10 h-10 object-contain" 
             />

@@ -384,7 +384,7 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center items-center gap-3 mb-4">
             <img 
-              src="https://github.com/PedroVazN/Boteco_Gordinho_VN/blob/main/project/src/images/logo.png?raw=true" 
+              src="https://github.com/PedroVazN/Boteco_Gordinho_VN/blob/main/project/src/images/logo1.png?raw=true" 
               alt="Boteco do Gordinho"
               className="w-16 h-16 object-contain" 
             />
